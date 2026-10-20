@@ -1,21 +1,20 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-// Middlewares
-app.use(cors());
+// Middleware para leer JSON
 app.use(express.json());
 
-// Importar rutas
+// Importar tus rutas de artículos
 const articuloRoutes = require('./src/routes/articuloRoutes');
-app.use('/api', articuloRoutes);
+app.use('/articulos', articuloRoutes);
 
-// Ruta de prueba
+// Mensaje de prueba en la raíz
 app.get('/', (req, res) => {
-    res.send('Servidor del proyecto Bike Store corriendo correctamente.');
+    res.send('Servidor funcionando correctamente en el proyecto Bike Store');
 });
 
+// ¡ESTA ES LA CLAVE! Asegúrate de tener este listen al final:
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

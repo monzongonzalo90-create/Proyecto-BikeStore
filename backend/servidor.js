@@ -1,20 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-
 const app = express();
+const PORT = 3000;
 
-// Middlewares básicos
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Ruta de prueba inicial
+// Importar rutas
+const articuloRoutes = require('./src/routes/articuloRoutes');
+app.use('/api', articuloRoutes);
+
+// Ruta de prueba
 app.get('/', (req, res) => {
-    res.send('API Bike Store con MySQL funcionando correctamente 🚀');
+    res.send('Servidor del proyecto Bike Store corriendo correctamente.');
 });
 
-// Configuración del puerto
-const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

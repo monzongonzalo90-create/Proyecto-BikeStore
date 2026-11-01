@@ -1,13 +1,10 @@
-import { Router } from 'express';
+import express from 'express';
 import { registrarUsuario, loginUsuario } from '../controllers/authController.js';
 
-const router = Router();
+const router = express.Router();
 
-// Ruta POST para registrar usuarios
+// Asegúrate de que esta línea exista:
 router.post('/register', registrarUsuario);
-
-// Ruta POST para iniciar sesión
 router.post('/login', loginUsuario);
 
 export default router;
-
